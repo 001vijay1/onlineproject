@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %} home{% endblock %}
+  {% block css %}
+.col-xs-4{
+width:300px;
+hight:200px;
+}
+{% endblock %}
+{% block body %}
+<div class="container mt-1 ">
+    <div class="row">
+        {% for blog in form %}
+        <div class="col-xs-4 col-sm-4 col-md-4">
+            <div class="card" style="width: 18rem;">
+                <img src="/media/{{blog.image}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{blog.title}}</h5>
+                    <p class="card-text">{{blog.description|slice:"0:70"}}</p>
+                </div>
+                <div class="card-body">
+                    <a href="#" class="card-link">{{blog.auther}}</a>
+                    <a href="#" class="card-link">{{blog.date}}</a>
+                    <a href="#" class="card-link">view</a>
+                    <a href="blogdetails/{{blog.slug}}" class="btn btn-primary">Read</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
